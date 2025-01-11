@@ -1,0 +1,78 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+
+void merge(int arr[],int low,int mid,int high)
+{
+    int l1 = mid-low+1;
+    int l2 = high - mid;
+    int arr1[l1];
+    int arr2[l2];
+    for(int i=0;i<l1;i++)
+    {
+        arr1[i]=arr[low+i];
+    }
+    int j=0;
+    for(int i=0;i<high;i++)
+    {
+        arr2[i]=arr[mid+1+i];
+        
+    }
+    
+    int i=0;
+     j=0;
+    int k=low;
+    int ans[l1+l2];
+    while(i<l1 &&  j<l2)
+    {
+        if(arr1[i]<=arr2[j])
+        {
+            arr[k]=arr1[i];
+            k++;
+            i++;
+        }
+        else 
+        {
+            arr[k]=arr2[j];
+            k++;
+            j++;
+        }
+    }
+    while(i<l1)
+    {
+        arr[k]=arr1[i];
+            k++;
+            i++;
+        
+    }
+    while(j<l2)
+    {
+        arr[k]=arr2[j];
+            k++;
+            j++;
+        
+    }
+}
+void mergesort(int arr[],int low, int high)
+{
+    if(low<high)
+    {
+        
+    
+    int mid = low+(high-low)/2;
+    mergesort(arr,low,mid);
+    mergesort(arr,mid+1,high);
+    merge(arr,low,mid,high);
+    }
+}
+int main() {
+    // Write C++ code here
+    int arr[5]={5,4,3,2,1};
+    mergesort(arr,0,4);
+    for(int i=0;i<5;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+
+    return 0;
+}
