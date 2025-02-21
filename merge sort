@@ -22,7 +22,7 @@ void merge(int arr[],int low,int mid,int high)
     int i=0;
      j=0;
     int k=low;
-    int ans[l1+l2];
+    
     while(i<l1 &&  j<l2)
     {
         if(arr1[i]<=arr2[j])
